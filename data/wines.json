@@ -1,0 +1,53 @@
+[
+    {
+        "name": "Faustino I",
+        "vintage": 2008,
+        "country": "Spanien",
+        "region": "Rioja",
+        "price": 199,
+        "amount": 1,
+        "tasting": "Spanien"
+    },
+    {
+        "name": "Faustino I",
+        "vintage": 2009,
+        "country": "Spanien",
+        "region": "Rioja",
+        "price": 199,
+        "amount": 1,
+        "tasting": "Spanien"
+    },
+    {
+        "name": "Conde de Caralt",
+        "vintage": "NV",
+        "country": "Spanien",
+        "region": "Torrelavit",
+        "price": 100,
+        "amount": 2,
+        "tasting": "Spanien"
+    },
+    {
+        "name": "Pertois-Moriset Le Mesnil-Sur-Oger Grand Cru",
+        "vintage": "NV",
+        "country": "Frankrike",
+        "region": "Champagne",
+        "price": 400,
+        "amount": 1
+    },
+    {
+        "name": "Ekliptika",
+        "vintage": 2017,
+        "country": "Sydafrika",
+        "region": "Stellenbosch",
+        "price": 250,
+        "amount": 1
+    },
+    {
+        "name": "Vieux Telegraphe La Crau",
+        "vintage": 2019,
+        "country": "Frankrike",
+        "region": "Chateauneuf-de-Pape",
+        "price": 800,
+        "amount": 1
+    }
+]

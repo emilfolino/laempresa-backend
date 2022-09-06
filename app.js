@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
     res.json({
         msg: "La empresa",
     });
-})
+});
 
 const server = app.listen(port, () => {
     console.log('la empresa api listening on port ' + port);
