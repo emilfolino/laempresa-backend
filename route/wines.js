@@ -19,9 +19,15 @@ router.post(
     async (req, res) => {
         const newWine = req.body;
 
-        const result = await winesModel.insertWine(newWine);
+        if (newWine.name && newWine.price && newWine.amount) {
+            const result = await winesModel.insertWine(newWine);
 
-        return res.status(201).json({ data: result});
+            return res.status(201).json({ data: result });
+        } else {
+            return res.status(400).json({ errors: {
+                message: "Price and amount needed to create wine."
+            }});
+        }
     }
 );
 
