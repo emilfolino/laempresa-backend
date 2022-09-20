@@ -7,7 +7,10 @@ const cors = require('cors');
 
 const wines = require("./route/wines.js");
 
+const wineModel = require("./models/wines.js");
+
 const app = express();
+const httpServer = require("http").createServer(app);
 
 const port = process.env.PORT || 8976;
 
@@ -33,7 +36,26 @@ app.get('/', (req, res) => {
     });
 });
 
-const server = app.listen(port, () => {
+
+const io = require("socket.io")(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+
+io.sockets.on('connection', function(socket) {
+    console.log(socket.id); // Nått lång och slumpat
+
+    socket.on("amounts", function(data) {
+        socket.broadcast.emit("amounts", data);
+
+        wineModel.updateAmounts(data);
+    });
+});
+
+
+const server = httpServer.listen(port, () => {
     console.log('la empresa api listening on port ' + port);
 });
 
