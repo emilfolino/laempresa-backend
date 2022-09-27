@@ -1,8 +1,7 @@
 const mongo = require("mongodb").MongoClient;
-const collectionName = "wines";
 
 const database = {
-    getDb: async function getDb() {
+    getDb: async function getDb(collectionName="wines") {
         let dsn = `mongodb+srv://texteditor:${process.env.ATLAS_PASSWORD}@cluster0.hkfbt.mongodb.net/?retryWrites=true&w=majority`;
 
         if (process.env.NODE_ENV === 'test') {

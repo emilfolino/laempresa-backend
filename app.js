@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 
 const wines = require("./route/wines.js");
+const auth = require("./route/auth.js");
 
 const wineModel = require("./models/wines.js");
 
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/wines", wines);
+app.use("/auth", auth);
 
 app.get('/', (req, res) => {
     res.json({

@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const winesModel = require("../models/wines");
+const usersModel = require("../models/users");
 
 router.get(
     "/",
+    (req, res, next) => usersModel.checkToken(req, res, next),
     async (req, res) => {
         const wines = await winesModel.getAllWines();
 
