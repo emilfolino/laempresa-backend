@@ -5,13 +5,11 @@ const ObjectId = require('mongodb').ObjectId;
 
 const wines = {
     getAllWines: async function getAllWines() {
-        let db;
+        let db = await database.getDb();
 
         try {
-            db = await database.getDb();
-
             const allWines = await db.collection.find().toArray();
-
+            
             return allWines;
         } catch (error) {
             return {

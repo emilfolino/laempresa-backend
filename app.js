@@ -5,6 +5,14 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 
+const visual = true;
+const { graphqlHTTP } = require('express-graphql');
+const {
+  GraphQLSchema
+} = require("graphql");
+
+const RootQueryType = require("./graphql/root.js");
+
 const wines = require("./route/wines.js");
 const auth = require("./route/auth.js");
 
@@ -31,6 +39,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/wines", wines);
 app.use("/auth", auth);
+
+const schema = new GraphQLSchema({
+    query: RootQueryType
+});
+
+app.use('/graphql', graphqlHTTP({
+    schema: schema,
+    graphiql: visual, // Visual är satt till true under utveckling
+}));
 
 app.get('/', (req, res) => {
     res.json({
