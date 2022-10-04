@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 
-const visual = true;
+const visual = false;
 const { graphqlHTTP } = require('express-graphql');
 const {
   GraphQLSchema

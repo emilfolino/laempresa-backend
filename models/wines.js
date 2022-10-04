@@ -9,8 +9,27 @@ const wines = {
 
         try {
             const allWines = await db.collection.find().toArray();
-            
+
             return allWines;
+        } catch (error) {
+            return {
+                errors: {
+                    message: error.message,
+                }
+            };
+        } finally {
+            await db.client.close();
+        }
+    },
+    getWine: async function getWine(id) {
+        let db = await database.getDb();
+
+        try {
+            const filter = { _id: ObjectId(id) }
+
+            const wine = await db.collection.findOne(filter);
+
+            return wine;
         } catch (error) {
             return {
                 errors: {
