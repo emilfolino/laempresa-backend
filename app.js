@@ -17,6 +17,7 @@ const wines = require("./route/wines.js");
 const auth = require("./route/auth.js");
 
 const wineModel = require("./models/wines.js");
+const usersModel = require("./models/users.js");
 
 const app = express();
 const httpServer = require("http").createServer(app);
@@ -44,6 +45,7 @@ const schema = new GraphQLSchema({
     query: RootQueryType
 });
 
+app.use('/graphql', usersModel.checkToken);
 app.use('/graphql', graphqlHTTP({
     schema: schema,
     graphiql: visual, // Visual är satt till true under utveckling
